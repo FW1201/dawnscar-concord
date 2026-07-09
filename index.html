@@ -10,7 +10,7 @@
     :root { --ink:#101720; --paper:#f2ead9; --muted:#9ea7b6; --amber:#d6a84a; --ember:#e06d3c; --blue:#6e82db; --moss:#62a987; --line:rgba(242,234,217,.17); }
     * { box-sizing:border-box; } body { margin:0; color:var(--paper); background:radial-gradient(circle at 77% 12%,#263956 0,transparent 27%),radial-gradient(circle at 20% 80%,#29382f 0,transparent 28%),#101720; font-family:"Noto Sans TC",system-ui,sans-serif; min-height:100vh; }
     body::before { content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(115deg,transparent 0 47%,rgba(255,238,190,.06) 47.2% 47.5%,transparent 47.8%),radial-gradient(circle at 10% 20%,#fff 0 1px,transparent 1.5px);background-size:100% 100%,37px 37px;z-index:0; }
-    body::after { content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:linear-gradient(180deg,#101720d9 0%,#101720b8 45%,#101720ef 100%),url('assets/art/dawnscar-world.png') center top/cover no-repeat;opacity:.48; }
+    body::after { content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:linear-gradient(180deg,#101720d9 0%,#101720b8 45%,#101720ef 100%),url('https://raw.githubusercontent.com/FW1201/dawnscar-concord/main/assets/art/dawnscar-world.png') center top/cover no-repeat;opacity:.48; }
     button { font:inherit; } button:focus-visible,.card:focus-visible { outline:3px solid #fff0a7; outline-offset:3px; }
     .shell { position:relative;z-index:1; max-width:1500px; margin:auto; padding:22px clamp(16px,3vw,46px) 40px; }
     header { display:flex; justify-content:space-between; gap:16px; align-items:center; border-bottom:1px solid var(--line); padding-bottom:18px; }
@@ -55,7 +55,8 @@
       {n:'火橋護腕',t:'裝備',c:1,icon:'◒',x:'#e06d3c',e:'最左角色攻擊 +1。',act:'equipatk'},
       {n:'燃索平台',t:'場域',c:2,icon:'△',x:'#e06d3c',e:'此處你的角色攻擊 +1。',act:'fieldatk'}]
   };
-  const baseDeck=(f)=>[0,0,1,1,2,3,4,5,6,7,8,0,1,4,5].map((i,k)=>({...cardDefs[f][i],id:f+'-'+k+'-'+Math.random().toString(36).slice(2),faction:f==='amber'?'琥珀庭':'燼行團',art:f==='amber'?'assets/art/amber-guardian.png':'assets/art/ember-pathfinder.png'}));
+  const IMAGE_BASE='https://raw.githubusercontent.com/FW1201/dawnscar-concord/main/assets/art/';
+  const baseDeck=(f)=>[0,0,1,1,2,3,4,5,6,7,8,0,1,4,5].map((i,k)=>({...cardDefs[f][i],id:f+'-'+k+'-'+Math.random().toString(36).slice(2),faction:f==='amber'?'琥珀庭':'燼行團',art:IMAGE_BASE+(f==='amber'?'amber-guardian.png':'ember-pathfinder.png')}));
   const game={round:1,turn:'player',selected:null,gameOver:false,p:null,b:null,territories:[]};
   const names=[['雲階市集','交易會改變光的去向','#4d6e9a'],['鏡潮渡口','每一次抵達都像重逢','#456a88'],['根井庭園','根系記得每一個承諾','#52715a']];
   const shuffle=a=>a.sort(()=>Math.random()-.5); const id=()=>Math.random().toString(36).slice(2);
